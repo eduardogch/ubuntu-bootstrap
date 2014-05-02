@@ -4,7 +4,7 @@
 # Ubuntu bootstrap - A simple script to have ready my ubuntu.
 #
 # Only run in the console:
-# wget https://raw.github.com/eduardogch/ubuntu-bootstrap/master/bootstrap.sh -O - | sh
+# wget https://raw.githubusercontent.com/eduardogch/ubuntu-bootstrap/master/Ubuntu_bootstrap.sh -O - | sh
 
 # Update repos and packages.
 sudo apt-get -y update 
