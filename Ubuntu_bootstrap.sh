@@ -15,39 +15,41 @@ sudo apt-get -y upgrade
 
 # Adding and install repo's apps.
 sudo add-apt-repository -y ppa:danielrichter2007/grub-customizer
-sudo add-apt-repository -y ppa:ubuntu-wine/ppa 
 sudo add-apt-repository -y ppa:videolan/stable-daily
 sudo add-apt-repository -y ppa:linrunner/tlp
+sudo add-apt-repository -y ppa:tualatrix/ppa
+sudo add-apt-repository -y ppa:ubuntu-wine/ppa 
+sudo add-apt-repository -y ppa:libreoffice/ppa
+sudo add-apt-repository -y ppa:diesch/testing
 sudo add-apt-repository -y ppa:danjaredg/jayatana
-sudo add-apt-repository -y ppa:thefanclub/grive-tools
-sudo apt-get -y update
-
-sudo apt-get -y install grub-customizer wine vlc tlp tlp-rdw jayatana grive-tools
-
-sudo tlp start
-
-# Adding and install Unity and indicators apps.
-sudo apt-add-repository -y ppa:diesch/testing
-sudo apt-add-repository -y ppa:atareao/atareao
-sudo add-apt-repository -y ppa:nilarimogard/webupd8
-sudo apt-get -y update
-
-sudo apt-get -y install classicmenu-indicator indicator-cpufreq my-weather-indicator prime-indicator
 
 # Install most important apps
-sudo apt-get -y install p7zip-rar p7zip-full unace unrar zip unzip sharutils rar uudeview mpack arj cabextract file-roller 
+sudo apt-get -y install grub-customizer indicator-cpufreq unity-tweak-tool nvidia-prime ubuntu-restricted-extras tlp tlp-rdw
 
-sudo apt-get -y install ubuntu-restricted-extras preload unity-tweak-tool compizconfig-settings-manager gparted gconf-editor hplip hplip-gui
+sudo apt-get -y install vlc pinta furiusisomount ubuntu-wallpapers* skype cheese shutter easytag gdebi nautilus-dropbox nautilus-open-terminal nautilus-image-converter gparted ubuntu-tweak unity-tweak-tool pithos wine flashplugin-installer classicmenu-indicator jayatana keepass2
 
-sudo apt-get -y install chromium-browser pinta furiusisomount unetbootin skype nautilus-dropbox shutter easytag calibre pitivi gdebi adobe-flashplugin pepperflashplugin-nonfree xchat nautilus-open-terminal nautilus-image-converter keepass2 deluge
+sudo apt-get -y install p7zip-rar p7zip-full unace unrar zip unzip sharutils rar uudeview mpack arj cabextract file-roller
 
-sudo update-pepperflashplugin-nonfree --install
-
+sudo tlp start
 
 # *|*|*|*|*|*|*|*|*|*| Development Stuff *|*|*|*|*|*|*|*|*|*|* #
 
 # Diverse tools to diverse lenguajes
-sudo apt-get -y install build-essential linux-headers-$(uname -r) gedit-plugins geany geany-plugins git giggle meld mysql-workbench jmeter planner dia filezilla curl openjdk-7-jdk ant maven virtualbox
+sudo apt-get -y install build-essential linux-headers-$(uname -r) gedit-plugins geany geany-plugins openjdk-7-jre openjdk-7-jdk git filezilla curl geany git
+#http://www.mkyong.com/mongodb/how-to-install-mongodb-on-ubuntu/
+sudo apt-get -y install nodejs npm mongodb
+
+# Install Google Chrome
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo dpkg -i google-chrome-stable_current_amd64.deb
+rm -f google-chrome-stable_current_amd64.deb
+
+# Install Teamviewer
+sudo dpkg --add-architecture i386
+sudo apt-get update
+wget http://www.teamviewer.com/download/teamviewer_linux.deb
+sudo dpkg -i teamviewer_linux.deb
+sudo apt-get install -f
 
 
 # *|*|*|*|*|*|*|*|*|*| Remove Apps *|*|*|*|*|*|*|*|*|*|* #
@@ -55,39 +57,27 @@ sudo apt-get -y install build-essential linux-headers-$(uname -r) gedit-plugins 
 # Remove unity-lens
 gsettings set com.canonical.Unity.Lenses disabled-scopes "['more_suggestions-amazon.scope', 'more_suggestions-u1ms.scope', 'more_suggestions-populartracks.scope', 'music-musicstore.scope', 'more_suggestions-ebay.scope', 'more_suggestions-ubuntushop.scope', 'more_suggestions-skimlinks.scope']"
 
+# Disable crash reports:
+sudo service apport stop
+sudo gedit /etc/default/apport
+#last line change it to "enabled=0"
+
+# Wifi - Intel Centrino Wireless-N 1000 
+# http://askubuntu.com/a/362835
+# wget http://wireless.kernel.org/en/users/Drivers/iwlwifi?action=AttachFile&do=get&target=iwlwifi-1000-ucode-39.31.5.1.tgz
+# tar -xvzf iwlwifi-1000-ucode-39.31.5.1.tgz 
+# cd iwlwifi-1000-ucode-39.31.5.1/
+# sudo cp iwlwifi-1000-5.ucode /lib/firmware/
+
+# Launchers items in Ubuntu
+# http://askubuntu.com/questions/13758/how-can-i-edit-create-new-launcher-items-in-unity-by-hand
+
 
 # *|*|*|*|*|*|*|*|*|*| Clean up this mess *|*|*|*|*|*|*|*|*|*|* #
-
-sudo apt-get -y update 
-sudo apt-get -y upgrade
+sudo apt-get -f install
+sudo apt-get autoremove
 sudo apt-get -y autoclean
 sudo apt-get -y clean
 
 echo "Life is Easy with scripts"
 echo "Made by Eduardo Gonzalez - https://github.com/eduardogch"
-
-
-# Disable Errors - Ubuntu 14.04
-# http://ubuntuhandbook.org/index.php/2013/09/ubuntu-13-10-quick-tip-disable-apport-error-reporting/
-
-# Wifi - Intel Centrino Wireless-N 1000 
-# http://askubuntu.com/a/362835
-
-# Install Office 2007 - Ubuntu 14.04
-# http://nithinaneeshsct06bt.blogspot.com/2012/05/install-microsoft-office-2007-in-ubuntu.html
-
-# Install Teamviewer 9 - Ubuntu 14.04
-# Lib needed http://ubuntuforums.org/archive/index.php/t-1936044.html
-sudo apt-get install libxtst6:i386
-# http://askubuntu.com/a/453218
-
-# IntelliJ IDEA - Ubuntu 14.04
-# http://wiki.jetbrains.net/intellij/Installing_and_running_IntelliJ_IDEA_on_Ubuntu#Installing_IntelliJ_IDEA
-
-# MongoDB 2.4
-# http://docs.mongodb.org/v2.4/tutorial/install-mongodb-on-ubuntu/
-# Error dbpath
-# http://www.joshondevelopment.com/post/21207640961/getting-started-with-mongodb-dbpath-data-db-does
-
-# Launchers items in Ubuntu
-# http://askubuntu.com/questions/13758/how-can-i-edit-create-new-launcher-items-in-unity-by-hand
