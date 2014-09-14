@@ -22,6 +22,7 @@ sudo add-apt-repository -y ppa:ubuntu-wine/ppa
 sudo add-apt-repository -y ppa:libreoffice/ppa
 sudo add-apt-repository -y ppa:diesch/testing
 sudo add-apt-repository -y ppa:danjaredg/jayatana
+sudo apt-get -y update
 
 # Install most important apps
 sudo apt-get -y install grub-customizer indicator-cpufreq unity-tweak-tool nvidia-prime ubuntu-restricted-extras tlp tlp-rdw
