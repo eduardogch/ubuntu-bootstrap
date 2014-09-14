@@ -22,6 +22,7 @@ sudo add-apt-repository -y ppa:ubuntu-wine/ppa
 sudo add-apt-repository -y ppa:libreoffice/ppa
 sudo add-apt-repository -y ppa:diesch/testing
 sudo add-apt-repository -y ppa:danjaredg/jayatana
+sudo add-apt-repository -y ppa:jfi/psensor-unstable
 sudo apt-get -y update
 
 # Install most important apps
@@ -31,13 +32,17 @@ sudo apt-get -y install vlc pinta furiusisomount ubuntu-wallpapers* skype cheese
 
 sudo apt-get -y install p7zip-rar p7zip-full unace unrar zip unzip sharutils rar uudeview mpack arj cabextract file-roller
 
-sudo tlp start
+sudo apt-get -y install lm-sensors hddtemp psensor
+sudo dpkg-reconfigure hddtemp
+sudo sensors-detect
+sudo service kmod start
+
 
 # *|*|*|*|*|*|*|*|*|*| Development Stuff *|*|*|*|*|*|*|*|*|*|* #
 
 # Diverse tools to diverse lenguajes
-sudo apt-get -y install build-essential linux-headers-$(uname -r) gedit-plugins geany geany-plugins openjdk-7-jre openjdk-7-jdk git filezilla curl geany git
 #http://www.mkyong.com/mongodb/how-to-install-mongodb-on-ubuntu/
+sudo apt-get -y install build-essential linux-headers-$(uname -r) gedit-plugins geany geany-plugins openjdk-7-jre openjdk-7-jdk git filezilla curl geany git
 sudo apt-get -y install nodejs npm mongodb
 
 # Install Google Chrome
