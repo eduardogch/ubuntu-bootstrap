@@ -14,6 +14,7 @@ sudo apt-get -y upgrade
 # *|*|*|*|*|*|*|*|*|*| Essential Apps *|*|*|*|*|*|*|*|*|*|* #
 
 # Adding and install repo's apps.
+sudo add-apt-repository -y ppa:xorg-edgers/ppa
 sudo add-apt-repository -y ppa:danielrichter2007/grub-customizer
 sudo add-apt-repository -y ppa:videolan/stable-daily
 sudo add-apt-repository -y ppa:linrunner/tlp
@@ -23,16 +24,25 @@ sudo add-apt-repository -y ppa:libreoffice/ppa
 sudo add-apt-repository -y ppa:diesch/testing
 sudo add-apt-repository -y ppa:danjaredg/jayatana
 sudo add-apt-repository -y ppa:jfi/psensor-unstable
+sudo add-apt-repository -y ppa:webupd8team/popcorntime
+sudo add-apt-repository -y ppa:webupd8team/nemo
 sudo apt-get -y update
+sudo apt-get -f install
 
 # Install most important apps
-sudo apt-get -y install grub-customizer indicator-cpufreq unity-tweak-tool nvidia-prime ubuntu-restricted-extras tlp tlp-rdw
+sudo apt-get -y install grub-customizer nvidia-settings nvidia-prime ubuntu-restricted-extras wine tlp tlp-rdw preload
 
-sudo apt-get -y install vlc pinta furiusisomount ubuntu-wallpapers* skype cheese shutter easytag gdebi nautilus-dropbox nautilus-open-terminal nautilus-image-converter gparted ubuntu-tweak unity-tweak-tool pithos wine flashplugin-installer classicmenu-indicator jayatana keepass2
+# Install in software update the lastest driver
+
+sudo apt-get -y install vlc gimp ubuntu-wallpapers* skype cheese shutter gdebi nemo nemo-fileroller nemo-terminal dconf-tools gparted ubuntu-tweak unity-tweak-tool pithos flashplugin-installer classicmenu-indicator indicator-cpufreq jayatana keepass2 unetbootin steam popcorn-time soundconverter
+
+xdg-mime default nemo.desktop inode/directory application/x-gnome-saved-search
+
+sudo apt-get -f install && sudo apt-get autoremove
 
 sudo apt-get -y install p7zip-rar p7zip-full unace unrar zip unzip sharutils rar uudeview mpack arj cabextract file-roller
 
-sudo apt-get -y install lm-sensors hddtemp psensor
+sudo apt-get -y install lm-sensors hddtemp psensor thermald
 sudo dpkg-reconfigure hddtemp
 sudo sensors-detect
 sudo service kmod start
@@ -42,20 +52,12 @@ sudo service kmod start
 
 # Diverse tools to diverse lenguajes
 #http://www.mkyong.com/mongodb/how-to-install-mongodb-on-ubuntu/
-sudo apt-get -y install build-essential linux-headers-$(uname -r) gedit-plugins geany geany-plugins openjdk-7-jre openjdk-7-jdk git filezilla curl geany git
-sudo apt-get -y install nodejs npm mongodb
+sudo apt-get -y install build-essential linux-headers-$(uname -r) gedit-plugins geany geany-plugins openjdk-7-jre openjdk-7-jdk git filezilla curl virtualbox mongodb
 
 # Install Google Chrome
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome-stable_current_amd64.deb
 rm -f google-chrome-stable_current_amd64.deb
-
-# Install Teamviewer
-sudo dpkg --add-architecture i386
-sudo apt-get update
-wget http://www.teamviewer.com/download/teamviewer_linux.deb
-sudo dpkg -i teamviewer_linux.deb
-sudo apt-get install -f
 
 
 # *|*|*|*|*|*|*|*|*|*| Remove Apps *|*|*|*|*|*|*|*|*|*|* #
@@ -65,19 +67,28 @@ gsettings set com.canonical.Unity.Lenses disabled-scopes "['more_suggestions-ama
 
 # Disable crash reports:
 sudo service apport stop
-sudo gedit /etc/default/apport
+sudo nano /etc/default/apport
 #last line change it to "enabled=0"
 
 # Wifi - Intel Centrino Wireless-N 1000 
 # http://askubuntu.com/a/362835
-# wget http://wireless.kernel.org/en/users/Drivers/iwlwifi?action=AttachFile&do=get&target=iwlwifi-1000-ucode-39.31.5.1.tgz
-# tar -xvzf iwlwifi-1000-ucode-39.31.5.1.tgz 
-# cd iwlwifi-1000-ucode-39.31.5.1/
-# sudo cp iwlwifi-1000-5.ucode /lib/firmware/
+# http://ubuntuforums.org/showthread.php?t=2220377
+tar -xvzf iwlwifi-1000-ucode-39.31.5.1.tgz
+cd iwlwifi-1000-ucode-39.31.5.1/
+sudo cp iwlwifi-1000-5.ucode /lib/firmware/
+sudo modprobe -r iwldvm
+sudo modprobe iwlwifi 11n_disable=1
+sudo modprobe iwldvm
 
 # Launchers items in Ubuntu
 # http://askubuntu.com/questions/13758/how-can-i-edit-create-new-launcher-items-in-unity-by-hand
 
+###  Config Cron ### 
+export EDITOR=nano
+crontab -e
+# Added this lines at the bottom
+0 */3 * * * root apt-get update && apt-get -y upgrade
+0 */3 * * * root apt-get -f install && apt-get -y autoremove && apt-get -y autoclean && apt-get -y clean
 
 # *|*|*|*|*|*|*|*|*|*| Clean up this mess *|*|*|*|*|*|*|*|*|*|* #
 sudo apt-get -f install
