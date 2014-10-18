@@ -51,8 +51,28 @@ sudo service kmod start
 # *|*|*|*|*|*|*|*|*|*| Development Stuff *|*|*|*|*|*|*|*|*|*|* #
 
 # Diverse tools to diverse lenguajes
-#http://www.mkyong.com/mongodb/how-to-install-mongodb-on-ubuntu/
-sudo apt-get -y install build-essential linux-headers-$(uname -r) gedit-plugins geany geany-plugins openjdk-7-jre openjdk-7-jdk git filezilla curl virtualbox mongodb
+sudo apt-get -y install build-essential linux-headers-$(uname -r) gedit-plugins geany geany-plugins openjdk-7-jre openjdk-7-jdk git filezilla curl virtualbox
+
+git config --global user.name "Eduardo Gonzalez"
+git config --global user.email eduardo.gch@gmail.com
+
+#Instalar PHP, vagrant, composer y Laravel
+sudo apt-get install php5-cli
+
+curl -sS https://getcomposer.org/installer | php
+sudo mv composer.phar /usr/local/bin/composer
+
+gedit ~/.bashrc
+#Agregar en el Path de ubuntu
+export PATH=/opt/lampp/bin:~/.composer/vendor/bin:$PATH
+alias pozole='ssh pozole@pozole.noip.me'
+
+composer global require "laravel/installer=~1.1"
+
+#Crear un projecto en Laravel
+cd ~/git
+laravel new blog
+
 
 # Install Google Chrome
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
@@ -84,11 +104,9 @@ sudo modprobe iwldvm
 # http://askubuntu.com/questions/13758/how-can-i-edit-create-new-launcher-items-in-unity-by-hand
 
 ###  Config Cron ### 
-export EDITOR=nano
-crontab -e
-# Added this lines at the bottom
-0 */3 * * * root apt-get update && apt-get -y upgrade
-0 */3 * * * root apt-get -f install && apt-get -y autoremove && apt-get -y autoclean && apt-get -y clean
+sudo crontab -e
+0 */03 * * * root (apt-get update && apt-get -y -d upgrade) > /dev/null
+0 */03 * * * root (apt-get -f install && apt-get -y autoremove && apt-get -y autoclean && apt-get -y clean) > /dev/null
 
 # *|*|*|*|*|*|*|*|*|*| Clean up this mess *|*|*|*|*|*|*|*|*|*|* #
 sudo apt-get -f install
