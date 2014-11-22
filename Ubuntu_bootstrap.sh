@@ -51,33 +51,23 @@ sudo service kmod start
 # *|*|*|*|*|*|*|*|*|*| Development Stuff *|*|*|*|*|*|*|*|*|*|* #
 
 # Diverse tools to diverse lenguajes
-sudo apt-get -y install build-essential linux-headers-$(uname -r) gedit-plugins geany geany-plugins openjdk-7-jre openjdk-7-jdk git filezilla curl virtualbox
+sudo apt-get -y install build-essential linux-headers-$(uname -r) gedit-plugins openjdk-7-jre openjdk-7-jdk git filezilla curl virtualbox dia
 
 git config --global user.name "Eduardo Gonzalez"
 git config --global user.email eduardo.gch@gmail.com
-
-#Instalar PHP, vagrant, composer y Laravel
-sudo apt-get install php5-cli
-
-curl -sS https://getcomposer.org/installer | php
-sudo mv composer.phar /usr/local/bin/composer
-
-gedit ~/.bashrc
-#Agregar en el Path de ubuntu
-export PATH=/opt/lampp/bin:~/.composer/vendor/bin:$PATH
-alias pozole='ssh pozole@pozole.noip.me'
-
-composer global require "laravel/installer=~1.1"
-
-#Crear un projecto en Laravel
-cd ~/git
-laravel new blog
 
 
 # Install Google Chrome
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome-stable_current_amd64.deb
 rm -f google-chrome-stable_current_amd64.deb
+
+# Install Teamviewer
+sudo dpkg --add-architecture i386
+sudo apt-get -y update
+wget http://www.teamviewer.com/download/teamviewer_linux.deb
+sudo dpkg -i teamviewer_linux.deb
+sudo apt-get -y install -f
 
 
 # *|*|*|*|*|*|*|*|*|*| Remove Apps *|*|*|*|*|*|*|*|*|*|* #
