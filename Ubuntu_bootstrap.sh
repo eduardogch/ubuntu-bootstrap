@@ -34,7 +34,7 @@ sudo apt-get -y install grub-customizer nvidia-settings nvidia-prime ubuntu-rest
 
 # Install in software update the lastest driver
 
-sudo apt-get -y install vlc gimp ubuntu-wallpapers* skype cheese shutter gdebi nemo nemo-fileroller nemo-terminal dconf-tools gparted ubuntu-tweak unity-tweak-tool pithos flashplugin-installer classicmenu-indicator indicator-cpufreq jayatana keepass2 unetbootin steam popcorn-time soundconverter
+sudo apt-get -y install vlc gimp ubuntu-wallpapers* skype cheese shutter gdebi nemo nemo-fileroller dconf-tools gparted ubuntu-tweak unity-tweak-tool pithos flashplugin-installer classicmenu-indicator indicator-cpufreq indicator-multiload jayatana keepass2 unetbootin steam popcorn-time soundconverter
 
 xdg-mime default nemo.desktop inode/directory application/x-gnome-saved-search
 
@@ -51,11 +51,11 @@ sudo service kmod start
 # *|*|*|*|*|*|*|*|*|*| Development Stuff *|*|*|*|*|*|*|*|*|*|* #
 
 # Diverse tools to diverse lenguajes
-sudo apt-get -y install build-essential linux-headers-$(uname -r) gedit-plugins openjdk-7-jre openjdk-7-jdk git filezilla curl virtualbox dia
+sudo apt-get -y install build-essential linux-headers-$(uname -r) gedit-plugins openjdk-7-jre openjdk-7-jdk git filezilla mysql-workbench curl virtualbox dia
 
 git config --global user.name "Eduardo Gonzalez"
 git config --global user.email eduardo.gch@gmail.com
-
+ssh-keygen -t rsa -C $USER"@localhost"
 
 # Install Google Chrome
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
