@@ -7,16 +7,13 @@
 # wget https://raw.githubusercontent.com/eduardogch/ubuntu-bootstrap/master/Ubuntu_bootstrap.sh -O - | sh
 
 # Update repos and packages.
-sudo apt-get -y update 
-sudo apt-get -y upgrade
+sudo apt-get -y update && sudo apt-get -y upgrade
 
 
 # *|*|*|*|*|*|*|*|*|*| Essential Apps *|*|*|*|*|*|*|*|*|*|* #
 
-# Adding and install repo's apps.
-sudo add-apt-repository -y ppa:xorg-edgers/ppa
+# Adding repo's apps.
 sudo add-apt-repository -y ppa:danielrichter2007/grub-customizer
-sudo add-apt-repository -y ppa:videolan/stable-daily
 sudo add-apt-repository -y ppa:linrunner/tlp
 sudo add-apt-repository -y ppa:tualatrix/ppa
 sudo add-apt-repository -y ppa:ubuntu-wine/ppa 
@@ -24,34 +21,33 @@ sudo add-apt-repository -y ppa:libreoffice/ppa
 sudo add-apt-repository -y ppa:diesch/testing
 sudo add-apt-repository -y ppa:danjaredg/jayatana
 sudo add-apt-repository -y ppa:jfi/psensor-unstable
-sudo add-apt-repository -y ppa:webupd8team/popcorntime
-sudo add-apt-repository -y ppa:webupd8team/nemo
+sudo add-apt-repository -y ppa:team-xbmc/ppa
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys D2C19886
+sudo sh -c 'echo "deb http://repository.spotify.com stable non-free" >> /etc/apt/sources.list.d/spotify.list'
 sudo apt-get -y update
-sudo apt-get -f install
 
-# Install most important apps
-sudo apt-get -y install grub-customizer nvidia-settings nvidia-prime ubuntu-restricted-extras wine tlp tlp-rdw preload
+# Laptops apps
+sudo apt-get -y install grub-customizer ubuntu-restricted-extras wine tlp tlp-rdw lm-sensors hddtemp psensor thermald preload
 
-# Install in software update the lastest driver
-
-sudo apt-get -y install vlc gimp ubuntu-wallpapers* skype cheese shutter gdebi nemo nemo-fileroller dconf-tools gparted ubuntu-tweak unity-tweak-tool pithos flashplugin-installer classicmenu-indicator indicator-cpufreq indicator-multiload jayatana keepass2 unetbootin steam popcorn-time soundconverter
-
-xdg-mime default nemo.desktop inode/directory application/x-gnome-saved-search
-
-sudo apt-get -f install && sudo apt-get autoremove
-
-sudo apt-get -y install p7zip-rar p7zip-full unace unrar zip unzip sharutils rar uudeview mpack arj cabextract file-roller
-
-sudo apt-get -y install lm-sensors hddtemp psensor thermald
 sudo dpkg-reconfigure hddtemp
 sudo sensors-detect
 sudo service kmod start
+sudo tlp start
 
+# Install apps
+sudo apt-get -y install vlc gimp ubuntu-wallpapers* skype cheese shutter gparted ubuntu-tweak unity-tweak-tool flashplugin-installer classicmenu-indicator indicator-cpufreq indicator-multiload jayatana keepass2 unetbootin steam soundconverter spotify-client kodi nautilus-dropbox nautilus-open-terminal
+
+sudo apt-get -y install p7zip-rar p7zip-full unace unrar zip unzip sharutils rar uudeview mpack arj cabextract file-roller
 
 # *|*|*|*|*|*|*|*|*|*| Development Stuff *|*|*|*|*|*|*|*|*|*|* #
 
 # Diverse tools to diverse lenguajes
 sudo apt-get -y install build-essential linux-headers-$(uname -r) gedit-plugins openjdk-7-jre openjdk-7-jdk git filezilla mysql-workbench curl virtualbox dia
+
+#Node, Mongo & NPM
+sudo apt-get install mongodb nodejs npm
+sudo ln -s /usr/bin/nodejs /usr/bin/node
+sudo npm install -g nodemon gulp bower
 
 git config --global user.name "Eduardo Gonzalez"
 git config --global user.email eduardo.gch@gmail.com
@@ -77,8 +73,11 @@ gsettings set com.canonical.Unity.Lenses disabled-scopes "['more_suggestions-ama
 
 # Disable crash reports:
 sudo service apport stop
-sudo nano /etc/default/apport
-#last line change it to "enabled=0"
+sudo rm /var/crash/*
+gksudo gedit /etc/default/apport
+#Change enabled=1 to enabled=0
+#http://askubuntu.com/questions/495957/how-to-disable-the-unlock-your-keyring-popup
+
 
 # Wifi - Intel Centrino Wireless-N 1000 
 # http://askubuntu.com/a/362835
@@ -93,16 +92,53 @@ sudo modprobe iwldvm
 # Launchers items in Ubuntu
 # http://askubuntu.com/questions/13758/how-can-i-edit-create-new-launcher-items-in-unity-by-hand
 
-###  Config Cron ### 
-sudo crontab -e
-0 */03 * * * root (apt-get update && apt-get -y -d upgrade) > /dev/null
-0 */03 * * * root (apt-get -f install && apt-get -y autoremove && apt-get -y autoclean && apt-get -y clean) > /dev/null
+# Startup transmition
+1.- Open Dash (hit Win/Super key by default). Enter Startup Applications then hit Enter
+2.- Click Add, enter name Transmission, enter command 
+    transmission-gtk --minimized
+
+# Instalacion Flexget
+sudo apt-get install python python-pip
+sudo pip install flexget
+sudo pip install --upgrade flexget
+
+mkdir /.flexget
+gedit ~/.flexget/config.yml
+#----------------------
+templates:
+  tv:
+    download: ~/Downloads/Torrents/
+    exists_series: ~/Downloads/Torrents/
+    series:
+      - south park
+      - game of thrones
+      - regular show
+      - silicon valley
+      - shark thank
+      - the amazing race
+      - the daily show
+      - last week tonight
+      - the profit
+      - better call saul
+
+tasks:
+  feed tv480p:
+    rss: http://www.torrentday.com/torrents/rss?download;l24;u=1323865;tp=3254b0e8fd13cc01a47daf9a0a66784b
+    template: tv
+
+  feed tvxvid:
+    rss: http://www.torrentday.com/torrents/rss?download;l2;u=1323865;tp=3254b0e8fd13cc01a47daf9a0a66784b
+    template: tv
+#----------------------
+
+sudo chmod 777 ~/.flexget/config.yml
+crontab -e
+@reboot /usr/local/bin/flexget execute --cron
+@hourly /usr/local/bin/flexget execute --cron
 
 # *|*|*|*|*|*|*|*|*|*| Clean up this mess *|*|*|*|*|*|*|*|*|*|* #
-sudo apt-get -f install
-sudo apt-get autoremove
-sudo apt-get -y autoclean
-sudo apt-get -y clean
+sudo apt-get -f install && sudo apt-get autoremove && sudo apt-get -y autoclean && sudo apt-get -y clean
+
 
 echo "Life is Easy with scripts"
 echo "Made by Eduardo Gonzalez - https://github.com/eduardogch"
