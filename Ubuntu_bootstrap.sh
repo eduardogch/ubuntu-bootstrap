@@ -9,7 +9,6 @@
 # Update repos and packages.
 sudo apt-get -y update && sudo apt-get -y upgrade
 
-
 # *|*|*|*|*|*|*|*|*|*| Essential Apps *|*|*|*|*|*|*|*|*|*|* #
 
 # Adding repo's apps.
@@ -26,9 +25,8 @@ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys D2C19886
 sudo sh -c 'echo "deb http://repository.spotify.com stable non-free" >> /etc/apt/sources.list.d/spotify.list'
 sudo apt-get -y update
 
-# Laptops apps
+# Main apps
 sudo apt-get -y install grub-customizer ubuntu-restricted-extras wine tlp tlp-rdw lm-sensors hddtemp psensor thermald preload
-
 sudo dpkg-reconfigure hddtemp
 sudo sensors-detect
 sudo service kmod start
@@ -65,6 +63,11 @@ wget http://www.teamviewer.com/download/teamviewer_linux.deb
 sudo dpkg -i teamviewer_linux.deb
 sudo apt-get -y install -f
 
+# Install Office 2007
+# http://nithinaneeshsct06bt.blogspot.com/2012/05/install-microsoft-office-2007-in-ubuntu.html
+rm -rf ~/.wine
+export WINEARCH=win32
+wineboot --update
 
 # *|*|*|*|*|*|*|*|*|*| Remove Apps *|*|*|*|*|*|*|*|*|*|* #
 
@@ -77,7 +80,6 @@ sudo rm /var/crash/*
 gksudo gedit /etc/default/apport
 #Change enabled=1 to enabled=0
 #http://askubuntu.com/questions/495957/how-to-disable-the-unlock-your-keyring-popup
-
 
 # Wifi - Intel Centrino Wireless-N 1000 
 # http://askubuntu.com/a/362835
@@ -92,12 +94,12 @@ sudo modprobe iwldvm
 # Launchers items in Ubuntu
 # http://askubuntu.com/questions/13758/how-can-i-edit-create-new-launcher-items-in-unity-by-hand
 
-# Startup transmition
-1.- Open Dash (hit Win/Super key by default). Enter Startup Applications then hit Enter
+# Startup Transmission
+1.- Enter Startup Applications
 2.- Click Add, enter name Transmission, enter command 
     transmission-gtk --minimized
 
-# Instalacion Flexget
+# Install Flexget
 sudo apt-get install python python-pip
 sudo pip install flexget
 sudo pip install --upgrade flexget
@@ -140,5 +142,5 @@ crontab -e
 sudo apt-get -f install && sudo apt-get autoremove && sudo apt-get -y autoclean && sudo apt-get -y clean
 
 
-echo "Life is Easy with scripts"
+echo "Life made Easy with scripts"
 echo "Made by Eduardo Gonzalez - https://github.com/eduardogch"
