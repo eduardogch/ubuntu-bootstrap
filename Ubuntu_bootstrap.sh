@@ -43,8 +43,10 @@ sudo apt-get -y install p7zip-rar p7zip-full unace unrar zip unzip sharutils rar
 sudo apt-get -y install build-essential linux-headers-$(uname -r) gedit-plugins openjdk-7-jre openjdk-7-jdk git filezilla mysql-workbench curl virtualbox dia
 
 #Node, Mongo & NPM
+curl --silent --location https://deb.nodesource.com/setup_4.x | sudo bash -
 sudo apt-get install mongodb nodejs npm
 sudo ln -s /usr/bin/nodejs /usr/bin/node
+sudo npm install -g npm
 sudo npm install -g nodemon gulp bower
 
 git config --global user.name "Eduardo Gonzalez"
@@ -100,7 +102,7 @@ sudo modprobe iwldvm
     transmission-gtk --minimized
 
 # Install Flexget
-sudo apt-get install python python-pip
+sudo apt-get install -y python python-pip
 sudo pip install flexget
 sudo pip install --upgrade flexget
 
