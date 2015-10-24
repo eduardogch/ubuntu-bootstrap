@@ -47,7 +47,7 @@ curl --silent --location https://deb.nodesource.com/setup_4.x | sudo bash -
 sudo apt-get install mongodb nodejs npm
 sudo ln -s /usr/bin/nodejs /usr/bin/node
 sudo npm install -g npm
-sudo npm install -g nodemon gulp bower
+sudo npm install -g nodemon gulp grunt-cli mocha bower yo
 
 git config --global user.name "Eduardo Gonzalez"
 git config --global user.email eduardo.gch@gmail.com
