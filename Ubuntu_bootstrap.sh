@@ -53,6 +53,14 @@ git config --global user.name "Eduardo Gonzalez"
 git config --global user.email eduardo.gch@gmail.com
 ssh-keygen -t rsa -C $USER"@localhost"
 
+# Install Redis
+wget http://download.redis.io/redis-stable.tar.gz
+tar xvzf redis-stable.tar.gz
+cd redis-stable
+make
+sudo make install
+redis-server
+
 # Install Google Chrome
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome-stable_current_amd64.deb
