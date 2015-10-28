@@ -59,6 +59,14 @@ wget -qO- http://download.rethinkdb.com/apt/pubkey.gpg | sudo apt-key add -
 sudo apt-get update
 sudo apt-get install rethinkdb
 
+sudo cp /etc/rethinkdb/default.conf.sample /etc/rethinkdb/instances.d/instance1.conf
+sudo /etc/init.d/rethinkdb restart
+
+# Change the port in the RethinkDB Admin panel to 8081 
+# This is to avoid problems with other apps
+sudo nano /etc/rethinkdb/instances.d/instance1.conf
+# http-port=8081
+
 # Install Redis
 wget http://download.redis.io/redis-stable.tar.gz
 tar xvzf redis-stable.tar.gz
