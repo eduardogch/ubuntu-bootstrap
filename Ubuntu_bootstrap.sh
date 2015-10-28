@@ -42,7 +42,7 @@ sudo apt-get -y install p7zip-rar p7zip-full unace unrar zip unzip sharutils rar
 # Diverse tools to diverse lenguajes
 sudo apt-get -y install build-essential linux-headers-$(uname -r) gedit-plugins openjdk-7-jre openjdk-7-jdk git filezilla mysql-workbench curl virtualbox dia
 
-#Node, Mongo & NPM
+#Node, Mongo, RethinkDB & NPM
 curl --silent --location https://deb.nodesource.com/setup_4.x | sudo bash -
 sudo apt-get install mongodb nodejs npm
 sudo ln -s /usr/bin/nodejs /usr/bin/node
@@ -52,6 +52,12 @@ sudo npm install -g nodemon gulp grunt-cli mocha bower yo
 git config --global user.name "Eduardo Gonzalez"
 git config --global user.email eduardo.gch@gmail.com
 ssh-keygen -t rsa -C $USER"@localhost"
+
+# Install RethinkDB
+source /etc/lsb-release && echo "deb http://download.rethinkdb.com/apt $DISTRIB_CODENAME main" | sudo tee /etc/apt/sources.list.d/rethinkdb.list
+wget -qO- http://download.rethinkdb.com/apt/pubkey.gpg | sudo apt-key add -
+sudo apt-get update
+sudo apt-get install rethinkdb
 
 # Install Redis
 wget http://download.redis.io/redis-stable.tar.gz
