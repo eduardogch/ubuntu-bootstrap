@@ -44,10 +44,10 @@ sudo apt-get -y install build-essential linux-headers-$(uname -r) gedit-plugins 
 
 #Node, Mongo, RethinkDB & NPM
 curl --silent --location https://deb.nodesource.com/setup_4.x | sudo bash -
-sudo apt-get install mongodb nodejs npm
+sudo apt-get install mongodb nodejs node-gyp npm
 sudo ln -s /usr/bin/nodejs /usr/bin/node
 sudo npm install -g npm
-sudo npm install -g nodemon gulp grunt-cli mocha bower yo
+sudo npm install -g nodemon gulp grunt-cli mocha bower yo node-gyp
 
 git config --global user.name "Eduardo Gonzalez"
 git config --global user.email eduardo.gch@gmail.com
@@ -98,6 +98,9 @@ wineboot --update
 # Remove unity-lens
 gsettings set com.canonical.Unity.Lenses disabled-scopes "['more_suggestions-amazon.scope', 'more_suggestions-u1ms.scope', 'more_suggestions-populartracks.scope', 'music-musicstore.scope', 'more_suggestions-ebay.scope', 'more_suggestions-ubuntushop.scope', 'more_suggestions-skimlinks.scope']"
 
+# Disable NTFS partions 
+# http://askubuntu.com/questions/124094/how-to-hide-an-ntfs-partition-from-ubuntu
+
 # Disable crash reports:
 sudo service apport stop
 sudo rm /var/crash/*
@@ -141,11 +144,8 @@ templates:
       - regular show
       - silicon valley
       - shark thank
-      - the amazing race
-      - the daily show
-      - last week tonight
       - the profit
-      - better call saul
+      - the big bang theory
 
 tasks:
   feed tv480p:
