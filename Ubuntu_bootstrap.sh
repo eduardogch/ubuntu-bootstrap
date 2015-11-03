@@ -53,6 +53,9 @@ git config --global user.name "Eduardo Gonzalez"
 git config --global user.email eduardo.gch@gmail.com
 ssh-keygen -t rsa -C $USER"@localhost"
 
+# Install Heroku Toolbelt
+sudo wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+
 # Install RethinkDB
 source /etc/lsb-release && echo "deb http://download.rethinkdb.com/apt $DISTRIB_CODENAME main" | sudo tee /etc/apt/sources.list.d/rethinkdb.list
 wget -qO- http://download.rethinkdb.com/apt/pubkey.gpg | sudo apt-key add -
