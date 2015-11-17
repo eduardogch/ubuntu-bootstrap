@@ -78,6 +78,13 @@ make
 sudo make install
 redis-server
 
+# Install Hipchat
+sudo echo "deb http://downloads.hipchat.com/linux/apt stable main" > \
+  /etc/apt/sources.list.d/atlassian-hipchat.list
+wget -O - https://www.hipchat.com/keys/hipchat-linux.key | apt-key add -
+sudo apt-get -y update
+sudo apt-get -y install hipchat
+
 # Install Google Chrome
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome-stable_current_amd64.deb
