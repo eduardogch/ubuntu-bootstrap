@@ -26,11 +26,12 @@ sudo sh -c 'echo "deb http://repository.spotify.com stable non-free" >> /etc/apt
 sudo apt-get -y update
 
 # Main apps
-sudo apt-get -y install grub-customizer ubuntu-restricted-extras wine tlp tlp-rdw lm-sensors hddtemp psensor thermald preload
+sudo apt-get -y install grub-customizer ubuntu-restricted-extras wine laptop-mode-tools powertop lm-sensors hddtemp psensor preload
 sudo dpkg-reconfigure hddtemp
 sudo sensors-detect
 sudo service kmod start
-sudo tlp start
+gksu lmt-config-gui
+sudo powertop -- calibrate
 
 # Install apps
 sudo apt-get -y install vlc gimp ubuntu-wallpapers* skype cheese shutter gparted ubuntu-tweak unity-tweak-tool flashplugin-installer classicmenu-indicator indicator-cpufreq indicator-multiload jayatana keepass2 unetbootin steam soundconverter spotify-client kodi nautilus-dropbox nautilus-open-terminal
