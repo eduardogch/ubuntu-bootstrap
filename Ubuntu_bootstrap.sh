@@ -13,10 +13,8 @@ sudo apt-get -y update && sudo apt-get -y upgrade
 
 # Adding repo's apps.
 sudo add-apt-repository -y ppa:danielrichter2007/grub-customizer
-sudo add-apt-repository -y ppa:linrunner/tlp
 sudo add-apt-repository -y ppa:tualatrix/ppa
-sudo add-apt-repository -y ppa:ubuntu-wine/ppa 
-sudo add-apt-repository -y ppa:libreoffice/ppa
+sudo add-apt-repository -y ppa:ubuntu-wine/ppa
 sudo add-apt-repository -y ppa:diesch/testing
 sudo add-apt-repository -y ppa:danjaredg/jayatana
 sudo add-apt-repository -y ppa:jfi/psensor-unstable
@@ -41,15 +39,16 @@ sudo apt-get -y install p7zip-rar p7zip-full unace unrar zip unzip sharutils rar
 # *|*|*|*|*|*|*|*|*|*| Development Stuff *|*|*|*|*|*|*|*|*|*|* #
 
 # Diverse tools to diverse lenguajes
-sudo apt-get -y install build-essential linux-headers-$(uname -r) gedit-plugins openjdk-7-jre openjdk-7-jdk git filezilla mysql-workbench curl virtualbox dia
+sudo apt-get -y install build-essential linux-headers-$(uname -r) gedit-plugins openjdk-7-jre openjdk-7-jdk git filezilla curl virtualbox dia
 
-#Node, Mongo, RethinkDB & NPM
+#Node & NPM
 curl --silent --location https://deb.nodesource.com/setup_4.x | sudo bash -
-sudo apt-get install mongodb nodejs node-gyp npm
+sudo apt-get -y update sudo apt-get -y install nodejs node-gyp npm 
 sudo ln -s /usr/bin/nodejs /usr/bin/node
 sudo npm install -g npm
-sudo npm install -g nodemon gulp grunt-cli mocha bower yo node-gyp
+sudo npm install -g npm node-gyp nodemon mocha karma-cli bower gulp
 
+# Git config
 git config --global user.name "Eduardo Gonzalez"
 git config --global user.email eduardo.gch@gmail.com
 ssh-keygen -t rsa -C $USER"@localhost"
@@ -57,34 +56,21 @@ ssh-keygen -t rsa -C $USER"@localhost"
 # Install Heroku Toolbelt
 sudo wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
 
-# Install RethinkDB
-source /etc/lsb-release && echo "deb http://download.rethinkdb.com/apt $DISTRIB_CODENAME main" | sudo tee /etc/apt/sources.list.d/rethinkdb.list
-wget -qO- http://download.rethinkdb.com/apt/pubkey.gpg | sudo apt-key add -
-sudo apt-get update
-sudo apt-get install rethinkdb
+# Install MongoDB
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
+echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | sudo tee /etc/apt/sources.list.d/mongodb.list
+sudo apt-get -y update && sudo apt-get -y install mongodb-org
 
-sudo cp /etc/rethinkdb/default.conf.sample /etc/rethinkdb/instances.d/instance1.conf
-sudo /etc/init.d/rethinkdb restart
-
-# Change the port in the RethinkDB Admin panel to 8081 
-# This is to avoid problems with other apps
-sudo nano /etc/rethinkdb/instances.d/instance1.conf
-# http-port=8081
-
-# Install Redis
-wget http://download.redis.io/redis-stable.tar.gz
-tar xvzf redis-stable.tar.gz
-cd redis-stable
-make
-sudo make install
-redis-server
+### Install Redis
+sudo apt-get -y update && sudo apt-get -y install redis-server
+sudo update-rc.d redis-server defaults 
+sudo /etc/init.d/redis-server start
 
 # Install Hipchat
 sudo echo "deb http://downloads.hipchat.com/linux/apt stable main" > \
   /etc/apt/sources.list.d/atlassian-hipchat.list
 wget -O - https://www.hipchat.com/keys/hipchat-linux.key | apt-key add -
-sudo apt-get -y update
-sudo apt-get -y install hipchat
+sudo apt-get -y update && sudo apt-get -y install hipchat
 
 # Install Google Chrome
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
