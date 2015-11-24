@@ -18,18 +18,18 @@ sudo add-apt-repository -y ppa:ubuntu-wine/ppa
 sudo add-apt-repository -y ppa:diesch/testing
 sudo add-apt-repository -y ppa:danjaredg/jayatana
 sudo add-apt-repository -y ppa:jfi/psensor-unstable
+sudo add-apt-repository -y ppa:linrunner/tlp
 sudo add-apt-repository -y ppa:team-xbmc/ppa
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys D2C19886
 sudo sh -c 'echo "deb http://repository.spotify.com stable non-free" >> /etc/apt/sources.list.d/spotify.list'
 sudo apt-get -y update
 
 # Main apps
-sudo apt-get -y install grub-customizer ubuntu-restricted-extras wine laptop-mode-tools powertop lm-sensors hddtemp psensor preload
+sudo apt-get -y install grub-customizer ubuntu-restricted-extras wine tlp tlp-rdw smartmontools ethtool lm-sensors hddtemp psensor preload
 sudo dpkg-reconfigure hddtemp
 sudo sensors-detect
 sudo service kmod start
-gksu lmt-config-gui
-sudo powertop -- calibrate
+sudo tlp start
 
 # Install apps
 sudo apt-get -y install vlc gimp ubuntu-wallpapers* skype cheese shutter gparted ubuntu-tweak unity-tweak-tool flashplugin-installer classicmenu-indicator indicator-cpufreq indicator-multiload jayatana keepass2 unetbootin steam soundconverter spotify-client kodi nautilus-dropbox nautilus-open-terminal
