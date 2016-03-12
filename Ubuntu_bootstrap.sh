@@ -36,8 +36,9 @@ sudo apt-get -y install vlc skype cheese shutter gparted ubuntu-tweak unity-twea
 sudo apt-get -y install build-essential linux-headers-$(uname -r) gedit-plugins openjdk-7-jre openjdk-7-jdk git filezilla curl dia
 
 #Node & NPM
-curl --silent --location https://deb.nodesource.com/setup_5.x | sudo bash -
-sudo apt-get -y update sudo apt-get -y install nodejs node-gyp 
+curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
+sudo apt-get -y update 
+sudo apt-get -y install nodejs node-gyp 
 sudo ln -s /usr/bin/nodejs /usr/bin/node
 sudo npm install -g npm node-gyp nodemon mocha karma-cli bower gulp
 
