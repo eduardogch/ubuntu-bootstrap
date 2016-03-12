@@ -39,6 +39,14 @@ sudo apt-get -y install build-essential linux-headers-$(uname -r) gedit-plugins 
 curl -L http://install.ohmyz.sh | sh
 chsh -s /bin/zsh
 
+sudo wget https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh -O ~/.git-prompt.sh
+
+# Install fonts
+wget https://github.com/Lokaltog/powerline/raw/develop/font/PowerlineSymbols.otf https://github.com/Lokaltog/powerline/raw/develop/font/10-powerline-symbols.conf
+mkdir -p ~/.fonts/ && mv PowerlineSymbols.otf ~/.fonts/
+fc-cache -vf ~/.fonts
+mkdir -p ~/.config/fontconfig/conf.d/ && mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
+
 nano ~/.zshrc
 ## Add to .zshrc
 plugins=(git bundler osx rake ruby)
