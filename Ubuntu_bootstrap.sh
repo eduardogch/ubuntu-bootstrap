@@ -48,7 +48,7 @@ git config --global user.email eduardo.gch@gmail.com
 ssh-keygen -t rsa -C $USER"@localhost"
 
 # Install Atom
-wget https://atom.io/download/deb
+wget https://atom-installer.github.com/v1.5.4/atom-amd64.deb
 sudo dpkg -i atom-amd64.deb
 apm install todo-show color-picker emmet minimap atom-beautify editorconfig pigments merge-conflicts color-picker linter jshint atom-jade linter-jade jade-autocompile jade-beautify file-icons highlight-selected minimap-highlight-selected autoclose-html atom-alignment uglify angularjs javascript-snippets angularjs-styleguide-snippets css-snippets jade-snippets
 
