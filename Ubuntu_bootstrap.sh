@@ -119,8 +119,9 @@ sudo apt-get install -y python python-pip
 sudo pip install flexget
 sudo pip install --upgrade flexget
 
-mkdir /.flexget
-gedit ~/.flexget/config.yml
+sudo mkdir ~/.flexget
+sudo chmod 777 -R ~/.flexget
+nano ~/.flexget/config.yml
 #----------------------
 templates:
   tv:
@@ -145,7 +146,6 @@ tasks:
     template: tv
 #----------------------
 
-sudo chmod 777 ~/.flexget/config.yml
 crontab -e
 @reboot /usr/local/bin/flexget execute --cron
 @hourly /usr/local/bin/flexget execute --cron
