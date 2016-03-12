@@ -114,6 +114,10 @@ sudo modprobe iwldvm
 2.- Click Add, enter name Transmission, enter command 
     transmission-gtk --minimized
 
+# Blocklist for transmitions
+Blocklist
+    http://john.bitsurge.net/public/biglist.p2p.gz
+
 # Install Flexget
 sudo apt-get install -y python python-pip
 sudo pip install flexget
