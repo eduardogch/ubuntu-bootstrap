@@ -12,29 +12,23 @@ sudo apt-get -y update && sudo apt-get -y upgrade
 # *|*|*|*|*|*|*|*|*|*| Essential Apps *|*|*|*|*|*|*|*|*|*|* #
 
 # Adding repo's apps.
-sudo add-apt-repository -y ppa:danielrichter2007/grub-customizer
 sudo add-apt-repository -y ppa:tualatrix/ppa
 sudo add-apt-repository -y ppa:ubuntu-wine/ppa
-sudo add-apt-repository -y ppa:diesch/testing
 sudo add-apt-repository -y ppa:danjaredg/jayatana
 sudo add-apt-repository -y ppa:jfi/psensor-unstable
-sudo add-apt-repository -y ppa:linrunner/tlp
 sudo add-apt-repository -y ppa:nilarimogard/webupd8
 sudo add-apt-repository -y ppa:team-xbmc/ppa
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys D2C19886
 sudo apt-get -y update
 
 # Main apps
-sudo apt-get -y install grub-customizer ubuntu-restricted-extras wine tlp tlp-rdw smartmontools ethtool lm-sensors hddtemp psensor prime-indicator preload
+sudo apt-get -y install ubuntu-restricted-extras wine lm-sensors hddtemp psensor preload
 sudo dpkg-reconfigure hddtemp
 sudo sensors-detect
-sudo service kmod start
-sudo tlp start
+sudo apt-get -f install
 
 # Install apps
-sudo apt-get -y install vlc skype cheese shutter gparted ubuntu-tweak unity-tweak-tool flashplugin-installer classicmenu-indicator indicator-cpufreq indicator-multiload jayatana keepass2 unetbootin steam soundconverter kodi nautilus-dropbox nautilus-open-terminal
-
-sudo apt-get -y install p7zip-rar p7zip-full unace unrar zip unzip sharutils rar uudeview mpack arj cabextract file-roller
+sudo apt-get -y install vlc skype cheese shutter gparted ubuntu-tweak unity-tweak-tool flashplugin-installer indicator-cpufreq indicator-multiload jayatana keepass2 unetbootin steam soundconverter kodi nautilus-dropbox nautilus-open-terminal p7zip-rar p7zip-full unace unrar zip unzip sharutils rar uudeview mpack arj cabextract file-roller
 
 # *|*|*|*|*|*|*|*|*|*| Development Stuff *|*|*|*|*|*|*|*|*|*|* #
 
@@ -42,19 +36,15 @@ sudo apt-get -y install p7zip-rar p7zip-full unace unrar zip unzip sharutils rar
 sudo apt-get -y install build-essential linux-headers-$(uname -r) gedit-plugins openjdk-7-jre openjdk-7-jdk git filezilla curl dia
 
 #Node & NPM
-curl --silent --location https://deb.nodesource.com/setup_4.x | sudo bash -
-sudo apt-get -y update sudo apt-get -y install nodejs node-gyp npm 
+curl --silent --location https://deb.nodesource.com/setup_5.x | sudo bash -
+sudo apt-get -y update sudo apt-get -y install nodejs node-gyp 
 sudo ln -s /usr/bin/nodejs /usr/bin/node
-sudo npm install -g npm
 sudo npm install -g npm node-gyp nodemon mocha karma-cli bower gulp
 
 # Git config
 git config --global user.name "Eduardo Gonzalez"
 git config --global user.email eduardo.gch@gmail.com
 ssh-keygen -t rsa -C $USER"@localhost"
-
-# Install Heroku Toolbelt
-sudo wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
 
 # Install MongoDB
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
@@ -65,12 +55,6 @@ sudo apt-get -y update && sudo apt-get -y install mongodb-org
 sudo apt-get -y update && sudo apt-get -y install redis-server
 sudo update-rc.d redis-server defaults 
 sudo /etc/init.d/redis-server start
-
-# Install Hipchat
-sudo echo "deb http://downloads.hipchat.com/linux/apt stable main" > \
-  /etc/apt/sources.list.d/atlassian-hipchat.list
-wget -O - https://www.hipchat.com/keys/hipchat-linux.key | apt-key add -
-sudo apt-get -y update && sudo apt-get -y install hipchat
 
 # Install Google Chrome
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
