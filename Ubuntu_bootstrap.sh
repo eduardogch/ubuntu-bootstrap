@@ -47,6 +47,11 @@ git config --global user.name "Eduardo Gonzalez"
 git config --global user.email eduardo.gch@gmail.com
 ssh-keygen -t rsa -C $USER"@localhost"
 
+# Install Atom
+wget https://atom.io/download/deb
+sudo dpkg -i atom-amd64.deb
+apm install todo-show color-picker emmet minimap atom-beautify editorconfig pigments merge-conflicts color-picker linter jshint atom-jade linter-jade jade-autocompile jade-beautify file-icons highlight-selected minimap-highlight-selected autoclose-html atom-alignment uglify angularjs javascript-snippets angularjs-styleguide-snippets css-snippets jade-snippets
+
 # Install MongoDB
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
 echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | sudo tee /etc/apt/sources.list.d/mongodb.list
