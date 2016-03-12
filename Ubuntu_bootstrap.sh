@@ -28,7 +28,7 @@ sudo sensors-detect
 sudo apt-get -f install
 
 # Install apps
-sudo apt-get -y install vlc skype cheese shutter gparted ubuntu-tweak unity-tweak-tool flashplugin-installer indicator-cpufreq indicator-multiload jayatana keepass2 unetbootin steam soundconverter kodi nautilus-dropbox nautilus-open-terminal p7zip-rar p7zip-full unace unrar zip unzip sharutils rar uudeview mpack arj cabextract file-roller
+sudo apt-get -y install vlc skype cheese shutter gparted ubuntu-tweak unity-tweak-tool flashplugin-installer indicator-cpufreq indicator-multiload jayatana keepass2 unetbootin steam soundconverter kodi nautilus-open-terminal p7zip-rar p7zip-full unace unrar zip unzip sharutils rar uudeview mpack arj cabextract file-roller
 
 # *|*|*|*|*|*|*|*|*|*| Development Stuff *|*|*|*|*|*|*|*|*|*|* #
 
