@@ -33,7 +33,16 @@ sudo apt-get -y install vlc skype cheese shutter gparted ubuntu-tweak unity-twea
 # *|*|*|*|*|*|*|*|*|*| Development Stuff *|*|*|*|*|*|*|*|*|*|* #
 
 # Diverse tools to diverse lenguajes
-sudo apt-get -y install build-essential linux-headers-$(uname -r) gedit-plugins openjdk-7-jre openjdk-7-jdk git filezilla curl dia virtualbox
+sudo apt-get -y install build-essential linux-headers-$(uname -r) gedit-plugins openjdk-7-jre openjdk-7-jdk git git-core filezilla curl dia virtualbox zsh
+
+# Install Oh My Zsh
+curl -L http://install.ohmyz.sh | sh
+chsh -s /bin/zsh
+
+nano ~/.zshrc
+## Add to .zshrc
+plugins=(git bundler osx rake ruby)
+ZSH_THEME="agnoster"
 
 #Node & NPM
 curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
