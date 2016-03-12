@@ -93,9 +93,10 @@ gksudo gedit /etc/default/apport
 # Wifi - Intel Centrino Wireless-N 1000 
 # http://askubuntu.com/a/362835
 # http://ubuntuforums.org/showthread.php?t=2220377
+wget https://wireless.wiki.kernel.org/_media/en/users/drivers/iwlwifi-1000-ucode-39.31.5.1.tgz
 tar -xvzf iwlwifi-1000-ucode-39.31.5.1.tgz
 cd iwlwifi-1000-ucode-39.31.5.1/
-sudo cp iwlwifi-1000-5.ucode /lib/firmware/
+sudo cp iwlwifi-*.ucode /lib/firmware
 sudo modprobe -r iwldvm
 sudo modprobe iwlwifi 11n_disable=1
 sudo modprobe iwldvm
