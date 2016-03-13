@@ -33,7 +33,7 @@ sudo apt-get -y install vlc skype cheese shutter gparted ubuntu-tweak unity-twea
 # *|*|*|*|*|*|*|*|*|*| Development Stuff *|*|*|*|*|*|*|*|*|*|* #
 
 # Diverse tools to diverse lenguajes
-sudo apt-get -y install build-essential linux-headers-$(uname -r) gedit-plugins openjdk-7-jre openjdk-7-jdk git git-core filezilla curl dia virtualbox zsh
+sudo apt-get -y install build-essential linux-headers-$(uname -r) gedit-plugins openjdk-7-jre openjdk-7-jdk git git-core filezilla curl dia zsh
 
 # Install Oh My Zsh
 curl -L http://install.ohmyz.sh | sh
