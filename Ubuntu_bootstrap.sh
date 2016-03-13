@@ -47,10 +47,10 @@ mkdir -p ~/.fonts/ && mv PowerlineSymbols.otf ~/.fonts/
 fc-cache -vf ~/.fonts
 mkdir -p ~/.config/fontconfig/conf.d/ && mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
 
-nano ~/.zshrc
+sudo nano ~/.zshrc
 ## Add to .zshrc
-plugins=(git bundler osx rake ruby)
-ZSH_THEME="agnoster"
+ZSH_THEME="risto"
+plugins=(git nyan bower common-aliases command-not-found)
 
 #Node & NPM
 curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
