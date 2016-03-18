@@ -50,7 +50,7 @@ mkdir -p ~/.config/fontconfig/conf.d/ && mv 10-powerline-symbols.conf ~/.config/
 sudo nano ~/.zshrc
 ## Add to .zshrc
 ZSH_THEME="risto"
-plugins=(git nyan bower common-aliases command-not-found)
+plugins=(git bower node npm nyan osx rake common-aliases command-not-found)
 
 #Node & NPM
 curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
