@@ -156,6 +156,7 @@ templates:
       - shark thank
       - the profit
       - the big bang theory
+      - click
 
 tasks:
   feed tv480p:
