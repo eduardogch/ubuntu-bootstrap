@@ -39,7 +39,7 @@ curl -L http://install.ohmyz.sh | sh
 chsh -s /bin/zsh
 sudo wget https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh -O ~/.git-prompt.sh
 sudo chsh -s $(which zsh)
-## needs to rebot
+## needs to rebot to start working with zsh
 sudo reboot
 
 # Install fonts
@@ -74,7 +74,7 @@ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
 echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | sudo tee /etc/apt/sources.list.d/mongodb.list
 sudo apt-get -y update && sudo apt-get -y install mongodb-org
 
-### Install Redis
+# Install Redis
 sudo apt-get -y update && sudo apt-get -y install redis-server
 sudo update-rc.d redis-server defaults 
 sudo /etc/init.d/redis-server start
