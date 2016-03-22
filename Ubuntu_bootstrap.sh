@@ -53,10 +53,11 @@ ZSH_THEME="risto"
 plugins=(git bower node npm nyan osx rake common-aliases command-not-found)
 
 #Node & NPM
-curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
-sudo apt-get -y update 
-sudo apt-get -y install nodejs node-gyp 
+sudo apt-get -y install nodejs node-gyp
 sudo ln -s /usr/bin/nodejs /usr/bin/node
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash
+nvm install node
+nvm use node
 sudo npm install -g npm node-gyp nodemon mocha karma-cli bower gulp
 
 # Git config
