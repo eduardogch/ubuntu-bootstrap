@@ -18,7 +18,6 @@ sudo add-apt-repository -y ppa:danjaredg/jayatana
 sudo add-apt-repository -y ppa:jfi/psensor-unstable
 sudo add-apt-repository -y ppa:nilarimogard/webupd8
 sudo add-apt-repository -y ppa:team-xbmc/ppa
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys D2C19886
 sudo apt-get -y update
 
 # Main apps
