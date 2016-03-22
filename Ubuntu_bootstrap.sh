@@ -37,8 +37,10 @@ sudo apt-get -y install build-essential linux-headers-$(uname -r) gedit-plugins 
 # Install Oh My Zsh
 curl -L http://install.ohmyz.sh | sh
 chsh -s /bin/zsh
-
 sudo wget https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh -O ~/.git-prompt.sh
+sudo chsh -s $(which zsh)
+## needs to rebot
+sudo reboot
 
 # Install fonts
 wget https://github.com/Lokaltog/powerline/raw/develop/font/PowerlineSymbols.otf https://github.com/Lokaltog/powerline/raw/develop/font/10-powerline-symbols.conf
@@ -52,12 +54,10 @@ ZSH_THEME="risto"
 plugins=(git bower node npm nyan osx rake common-aliases command-not-found)
 
 #Node & NPM
-sudo apt-get -y install nodejs node-gyp
-sudo ln -s /usr/bin/nodejs /usr/bin/node
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash
 nvm install node
 nvm use node
-sudo npm install -g npm node-gyp nodemon mocha karma-cli bower gulp
+npm install -g npm node-gyp nodemon mocha karma-cli bower gulp
 
 # Git config
 git config --global user.name "Eduardo Gonzalez"
