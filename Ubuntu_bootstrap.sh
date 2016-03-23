@@ -57,7 +57,7 @@ plugins=(git bower node npm nyan osx rake common-aliases command-not-found)
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash
 nvm install node
 nvm use node
-npm install -g npm node-gyp nodemon mocha karma-cli bower gulp apiconnect
+npm install -g npm node-gyp nodemon mocha karma-cli bower gulp
 
 # Git config
 git config --global user.name "Eduardo Gonzalez"
@@ -68,6 +68,11 @@ ssh-keygen -t rsa -C $USER"@localhost"
 wget https://atom-installer.github.com/v1.6.0/atom-amd64.deb
 sudo dpkg -i atom-amd64.deb
 apm install todo-show color-picker emmet minimap atom-beautify editorconfig pigments merge-conflicts color-picker linter jshint atom-jade linter-jade jade-autocompile jade-beautify file-icons highlight-selected minimap-highlight-selected autoclose-html atom-alignment uglify angularjs javascript-snippets angularjs-styleguide-snippets css-snippets jade-snippets
+
+# Install MariaDB
+sudo apt-get install mariadb-server
+sudo /usr/bin/mysql_secure_installation
+sudo service mysql start
 
 # Install MongoDB
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
