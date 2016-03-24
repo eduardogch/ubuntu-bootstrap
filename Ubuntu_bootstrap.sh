@@ -92,7 +92,7 @@ rm -f google-chrome-stable_current_amd64.deb
 # Install Teamviewer
 sudo dpkg --add-architecture i386
 sudo apt-get -y update
-wget http://www.teamviewer.com/download/teamviewer_linux.deb
+wget http://downloadus2.teamviewer.com/download/version_11x/teamviewer_11.0.53191_i386.deb
 sudo dpkg -i teamviewer_linux.deb
 sudo apt-get -y install -f
 
