@@ -102,6 +102,10 @@ rm -rf ~/.wine
 export WINEARCH=win32
 wineboot --update
 
+# Install GUI for OpenVPN
+sudo apt-get -y install network-manager-openvpn-gnome
+sudo restart network-manager
+
 # *|*|*|*|*|*|*|*|*|*| Remove Apps *|*|*|*|*|*|*|*|*|*|* #
 
 # Remove unity-lens
