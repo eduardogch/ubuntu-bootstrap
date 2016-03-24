@@ -93,7 +93,7 @@ rm -f google-chrome-stable_current_amd64.deb
 sudo dpkg --add-architecture i386
 sudo apt-get -y update
 wget http://downloadus2.teamviewer.com/download/version_11x/teamviewer_11.0.53191_i386.deb
-sudo dpkg -i teamviewer_linux.deb
+sudo dpkg -i teamviewer_11.0.53191_i386.deb
 sudo apt-get -y install -f
 
 # Install Office 2007
