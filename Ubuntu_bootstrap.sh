@@ -70,7 +70,7 @@ sudo dpkg -i atom-amd64.deb
 apm install todo-show color-picker emmet minimap atom-beautify editorconfig pigments merge-conflicts color-picker linter jshint atom-jade linter-jade jade-autocompile jade-beautify file-icons highlight-selected minimap-highlight-selected autoclose-html atom-alignment uglify angularjs javascript-snippets angularjs-styleguide-snippets css-snippets jade-snippets
 
 # Install MariaDB
-sudo apt-get install mariadb-server
+sudo apt-get -y install mariadb-server
 sudo /usr/bin/mysql_secure_installation
 sudo service mysql start
 
