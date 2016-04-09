@@ -18,6 +18,7 @@ sudo add-apt-repository -y ppa:danjaredg/jayatana
 sudo add-apt-repository -y ppa:jfi/psensor-unstable
 sudo add-apt-repository -y ppa:nilarimogard/webupd8
 sudo add-apt-repository -y ppa:team-xbmc/ppa
+sudo add-apt-repository -y ppa:openjdk-r/ppa
 sudo apt-get -y update
 
 # Main apps
@@ -32,7 +33,7 @@ sudo apt-get -y install vlc skype cheese shutter gparted ubuntu-tweak unity-twea
 # *|*|*|*|*|*|*|*|*|*| Development Stuff *|*|*|*|*|*|*|*|*|*|* #
 
 # Diverse tools to diverse lenguajes
-sudo apt-get -y install build-essential linux-headers-$(uname -r) gedit-plugins openjdk-7-jre openjdk-7-jdk git git-core filezilla curl dia zsh
+sudo apt-get -y install build-essential linux-headers-$(uname -r) gedit-plugins openjdk-8-jre openjdk-8-jdk git git-core filezilla curl dia zsh
 
 # Install Oh My Zsh
 curl -L http://install.ohmyz.sh | sh
