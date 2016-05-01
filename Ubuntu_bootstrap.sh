@@ -19,6 +19,7 @@ sudo add-apt-repository -y ppa:jfi/psensor-unstable
 sudo add-apt-repository -y ppa:nilarimogard/webupd8
 sudo add-apt-repository -y ppa:team-xbmc/ppa
 sudo add-apt-repository -y ppa:openjdk-r/ppa
+sudo add-apt-repository -y ppa:mc3man/trusty-media
 sudo apt-get -y update
 
 # Main apps
@@ -28,7 +29,7 @@ sudo sensors-detect
 sudo apt-get -f install
 
 # Install apps
-sudo apt-get -y install vlc skype cheese shutter gparted ubuntu-tweak unity-tweak-tool flashplugin-installer indicator-cpufreq indicator-multiload jayatana keepass2 unetbootin steam soundconverter kodi nautilus-open-terminal p7zip-rar p7zip-full unace unrar zip unzip sharutils rar uudeview mpack arj cabextract file-roller
+sudo apt-get -y install vlc skype ffmpeg cheese shutter gparted ubuntu-tweak unity-tweak-tool flashplugin-installer indicator-cpufreq indicator-multiload jayatana keepass2 unetbootin steam soundconverter kodi nautilus-open-terminal p7zip-rar p7zip-full unace unrar zip unzip sharutils rar uudeview mpack arj cabextract file-roller
 
 # *|*|*|*|*|*|*|*|*|*| Development Stuff *|*|*|*|*|*|*|*|*|*|* #
 
