@@ -123,16 +123,6 @@ gksudo gedit /etc/default/apport
 #Change enabled=1 to enabled=0
 #http://askubuntu.com/questions/495957/how-to-disable-the-unlock-your-keyring-popup
 
-# Wifi - Intel Centrino Wireless-N 1000 
-# http://askubuntu.com/a/362835
-# http://ubuntuforums.org/showthread.php?t=2220377
-wget https://wireless.wiki.kernel.org/_media/en/users/drivers/iwlwifi-1000-ucode-39.31.5.1.tgz
-tar -xvzf iwlwifi-1000-ucode-39.31.5.1.tgz
-cd iwlwifi-1000-ucode-39.31.5.1/
-sudo cp iwlwifi-*.ucode /lib/firmware
-sudo modprobe -r iwldvm
-sudo modprobe iwlwifi 11n_disable=1
-sudo modprobe iwldvm
 
 # Launchers items in Ubuntu
 # http://askubuntu.com/questions/13758/how-can-i-edit-create-new-launcher-items-in-unity-by-hand
@@ -146,42 +136,6 @@ sudo modprobe iwldvm
 Blocklist
     http://john.bitsurge.net/public/biglist.p2p.gz
 
-# Install Flexget
-sudo apt-get install -y python python-pip
-sudo pip install flexget
-sudo pip install --upgrade flexget
-
-sudo mkdir ~/.flexget
-sudo chmod 777 -R ~/.flexget
-nano ~/.flexget/config.yml
-#----------------------
-templates:
-  tv:
-    download: ~/Downloads/Torrents/
-    exists_series: ~/Downloads/Torrents/
-    series:
-      - south park
-      - game of thrones
-      - regular show
-      - silicon valley
-      - shark thank
-      - the profit
-      - the big bang theory
-      - click
-
-tasks:
-  feed tv480p:
-    rss: http://www.torrentday.com/torrents/rss?download;l24;u=1323865;tp=3254b0e8fd13cc01a47daf9a0a66784b
-    template: tv
-
-  feed tvxvid:
-    rss: http://www.torrentday.com/torrents/rss?download;l2;u=1323865;tp=3254b0e8fd13cc01a47daf9a0a66784b
-    template: tv
-#----------------------
-
-crontab -e
-@reboot /usr/local/bin/flexget execute --cron
-@hourly /usr/local/bin/flexget execute --cron
 
 # *|*|*|*|*|*|*|*|*|*| Clean up this mess *|*|*|*|*|*|*|*|*|*|* #
 sudo apt-get -f install && sudo apt-get autoremove && sudo apt-get -y autoclean && sudo apt-get -y clean
